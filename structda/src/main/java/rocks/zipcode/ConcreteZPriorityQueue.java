@@ -1,8 +1,7 @@
 package rocks.zipcode;
 
 
-
-
+import java.util.PriorityQueue;
 
 class PriorityElement<E> implements Comparable<PriorityElement<E>> {
     E element;
@@ -24,42 +23,61 @@ class PriorityElement<E> implements Comparable<PriorityElement<E>> {
 
 
 public class ConcreteZPriorityQueue<E> implements ZPriorityQueue<E>{
+    private PriorityQueue<PriorityElement<E>> queue;
+
+    public ConcreteZPriorityQueue() {
+        this.queue = new PriorityQueue<>();
+    }
 
 
     @Override
     public void enqueue(E element, Integer priority) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'enqueue'");
+        queue.add(new PriorityElement<>(element, priority));
+        // throw new UnsupportedOperationException("Unimplemented method 'enqueue'");
     }
 
     @Override
     public E dequeue(Integer priority) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'dequeue'");
+        for (PriorityElement<E> item : queue) {
+            if (item.priority.equals(priority)){
+                queue.remove(item);
+                return item.element;
+            }
+        }
+         throw new UnsupportedOperationException("Unimplemented method 'dequeue'");
     }
 
     @Override
     public E peek(Integer priority) {
-        // TODO Auto-generated method stub
+        for (PriorityElement<E> item : queue) {
+            if (item.priority.equals(priority)) {
+                return item.element;
+            }
+        }
         throw new UnsupportedOperationException("Unimplemented method 'peek'");
     }
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+        return queue.size();
+        //throw new UnsupportedOperationException("Unimplemented method 'size'");
     }
 
     @Override
     public int size(Integer priority) {
-        // TODO Auto-generated method stub
+        int count = 0;
+        for (PriorityElement<E> item : queue) {
+            if (item.priority.equals(priority)) {
+
+            }
+        }
         throw new UnsupportedOperationException("Unimplemented method 'size'");
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
+        return queue.isEmpty();
+        //throw new UnsupportedOperationException("Unimplemented method 'isEmpty'");
     }
 
 }
