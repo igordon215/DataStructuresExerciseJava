@@ -1,6 +1,30 @@
 package rocks.zipcode;
 
+
+
+
+
+class PriorityElement<E> implements Comparable<PriorityElement<E>> {
+    E element;
+    Integer priority;
+
+    PriorityElement(E element, Integer priority) {
+        this.element = element;
+        this.priority = priority;
+    }
+
+
+    @Override
+    public int compareTo(PriorityElement<E> o) {
+        return this.priority.compareTo(o.priority);
+    }
+}
+
+
+
+
 public class ConcreteZPriorityQueue<E> implements ZPriorityQueue<E>{
+
 
     @Override
     public void enqueue(E element, Integer priority) {
