@@ -1,6 +1,7 @@
 package rocks.zipcode;
 
 
+import java.util.NoSuchElementException;
 import java.util.PriorityQueue;
 
 class PriorityElement<E> implements Comparable<PriorityElement<E>> {
@@ -44,7 +45,7 @@ public class ConcreteZPriorityQueue<E> implements ZPriorityQueue<E>{
                 return item.element;
             }
         }
-         throw new UnsupportedOperationException("Unimplemented method 'dequeue'");
+        throw new NoSuchElementException("No element found with the given priority.");
     }
 
     @Override
@@ -54,7 +55,7 @@ public class ConcreteZPriorityQueue<E> implements ZPriorityQueue<E>{
                 return item.element;
             }
         }
-        throw new UnsupportedOperationException("Unimplemented method 'peek'");
+        throw new NoSuchElementException("No element found with the given priority.");
     }
 
     @Override
@@ -68,10 +69,10 @@ public class ConcreteZPriorityQueue<E> implements ZPriorityQueue<E>{
         int count = 0;
         for (PriorityElement<E> item : queue) {
             if (item.priority.equals(priority)) {
-
+                count++;
             }
         }
-        throw new UnsupportedOperationException("Unimplemented method 'size'");
+        return count;
     }
 
     @Override
